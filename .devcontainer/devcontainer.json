@@ -2,7 +2,6 @@
   "name": "PHP 8.2 Apache MySQL",
   "image": "ghcr.io/bts-sio-templates/php82-apache-pdo-mysql:latest",
   "forwardPorts": [8080],
-  "workspaceFolder": "/var/www/html",
   "customizations": {
     "vscode": {
       "extensions": [
