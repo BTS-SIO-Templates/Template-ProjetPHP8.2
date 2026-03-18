@@ -1,14 +1,58 @@
 {
-  "name": "PHP 8.2 Apache MySQL",
+  "name": "PHP 8.2 POO & SQL (BTS SIO)",
   "image": "ghcr.io/bts-sio-templates/php82-apache-pdo-mysql:latest",
-  "forwardPorts": [8080],
+  "forwardPorts": [8080, 3306],
+  
   "customizations": {
     "vscode": {
       "extensions": [
+        // --- Intelligence & Base ---
         "bmewburn.vscode-intelephense-client",
         "xdebug.php-debug",
-        "phproberto.vscode-php-getters-setters" // Génération getters/setters
-      ]
+        "usernamehw.errorlens", // Affiche les erreurs en bout de ligne (crucial pour les étudiants)
+        
+        // --- POO & Automatisation ---
+        "satiromarra.vscode-php8-getter-setter",
+        "neilbrayfield.php-docblocker",
+        
+        // --- Qualité & Standards (Linter) ---
+        "ValeryanM.vscode-phpsab", // PHP Sniffer & Beautifier
+        
+        // --- Utilitaires ---
+        "adpyke.vscode-sql-formatter",
+        "mhutchie.git-graph",
+        "formulahendry.auto-rename-tag",
+        "vincaslt.highlight-matching-tag",
+        "naumovs.color-highlight",
+        "pranaygp.vscode-css-peek",
+        "PKief.material-icon-theme"
+      ],
+      "settings": {
+        // Désactivation des aides natives limitées pour laisser Intelephense gérer
+        "php.suggest.basic": false,
+        "php.validate.enable": true,
+        
+        // Configuration de la Qualité de code (PSR-12)
+        "phpsab.standard": "PSR12",
+        "phpsab.executablePathCBF": "/usr/bin/phpcbf",
+        "phpsab.executablePathCS": "/usr/bin/phpcs",
+        "editor.formatOnSave": true, // Formate le code automatiquement au Ctrl+S
+        
+        // Configuration de la Documentation (DocBlocker)
+        "php-docblocker.gap": true,
+        "php-docblocker.extra": [
+          "@version 1.0",
+          "@author Nom de l'étudiant"
+        ],
+        
+        // Interface pédagogique
+        "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+        "editor.guides.bracketPairs": "active", // Colore les paires d'accolades (aide en POO)
+        "editor.renderWhitespace": "boundary"
+      }
     }
-  }
+  },
+
+  // Commande pour s'assurer que les outils de linting sont bien là au démarrage
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y php-codesniffer"
 }
