@@ -7,6 +7,7 @@
     "vscode": {
       "extensions": [
         // --- Intelligence & Base ---
+        "yzhang.markdown-all-in-one",
         "bmewburn.vscode-intelephense-client",
         "xdebug.php-debug",
         "usernamehw.errorlens", // Affiche les erreurs en bout de ligne (crucial pour les étudiants)
